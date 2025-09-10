@@ -1,61 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Ad1 from './assets/Ad1.jpg';
 import Ad2 from './assets/Ad2.jpg';
-import Ad3 from './assets/Ad3.jpg';
-import Ad4 from './assets/Ad4.jpg';
+import Ad3 from './assets/Ad3.jpeg';
+import Ad4 from './assets/Ad4.jpeg';
+import Ad5 from './assets/Ad5.jpeg';
+import Ad6 from './assets/Ad6.jpeg';
+import Ad7 from './assets/Ad7.jpeg';
 import Navbar from './components/navbar';
 import VideoCarousel from './components/video';
 import Footer from './components/footer';
 
-const images = [Ad1, Ad2, Ad3, Ad4];
+const images = [Ad1, Ad2, Ad3, Ad4, Ad5, Ad6, Ad7];
 
 function App() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div>
+    <div className='bg-yellow-100'>
       <Navbar />
 
-      <div className="min-h-screen bg-yellow-300 flex items-center justify-center pt-20">
-        <div className="relative w-full max-w-2xl flex justify-center items-center h-140">
-          {images.map((img, index) => {
-            const isActive = index === currentIndex;
-            const isPrev = index === (currentIndex - 1 + images.length) % images.length;
-            const isNext = index === (currentIndex + 1) % images.length;
-
-            return (
-              <div
-                key={index}
-                className={`
-                  absolute flex justify-center items-center transition-all duration-700 ease-in-out
-                  ${isActive ? 'scale-105 z-20 opacity-100' : 'scale-90 z-10 opacity-50'}
-                  ${isPrev ? '-translate-x-72' : ''}
-                  ${isNext ? 'translate-x-72' : ''}
-                `}
-              >
-                <img
-                  src={img}
-                  alt={`Ad ${index + 1}`}
-                  className="rounded-lg shadow-lg"
-                  style={{
-                    width: '645px',       // fixed width
-                    height: '645px',      // fixed height
-                    objectFit: 'cover',   // maintain aspect ratio by cropping
-                  }}
-                />
-              </div>
-            );
-          })}
+      <div className="bg-yellow-100 p-8">
+        <div className="flex flex-wrap justify-center gap-6">
+          {images.map((img, index) => (
+            <div key={index} className="flex justify-center items-center bg-white rounded-lg shadow-md mt-5">
+              <img
+                src={img}
+                alt={`Ad ${index + 1}`}
+                className="max-w-full max-h-[500px] object-contain"
+                style={{ flexBasis: '45%' }}   // Two images per row maximum
+              />
+            </div>
+          ))}
         </div>
       </div>
+
       <VideoCarousel />
+
       <Footer />
     </div>
   );

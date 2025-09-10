@@ -5,7 +5,11 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      baloo: ['Baloo 2', 'cursive'],
+      fredoka: ['Fredoka One', 'cursive'],
+      pacifico: ['Pacifico', 'cursive'],
+    },
   },
   plugins: [],
 }
