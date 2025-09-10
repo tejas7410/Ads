@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <VideoCarousel />
+
       <div className="min-h-screen bg-yellow-300 flex items-center justify-center pt-20">
         <div className="relative w-full max-w-2xl flex justify-center items-center h-140">
           {images.map((img, index) => {
@@ -55,6 +55,7 @@ function App() {
           })}
         </div>
       </div>
+      <VideoCarousel />
       <Footer />
     </div>
   );
