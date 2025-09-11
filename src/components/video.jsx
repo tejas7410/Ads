@@ -1,28 +1,27 @@
 import React from 'react';
 import Video1 from '/Videos/Video1.mp4';
-import Video2 from '/Videos/Video2.mp4';
-import Video3 from '/Videos/Video3.mp4';
-import Video4 from '/Videos/Video4.mp4';
-
-const videos = [Video1, Video2, Video3, Video4];
 
 function VideoCarousel() {
     return (
-        <div className="bg-yellow-100 p-8">
-            <div className="flex flex-wrap justify-center gap-6">
-                {videos.map((video, index) => (
-                    <div key={index} className="flex justify-center items-center  rounded-lg">
-                        <video
-                            src={video}
-                            className="max-w-full max-h-[500px] object-contain"
-                            style={{ flexBasis: '45%' }}  // Max 2 per row
-                            autoPlay
-                            loop
-                            muted
-                            controls
-                        />
-                    </div>
-                ))}
+        <div className="bg-black min-h-screen flex items-center font-fredoka justify-center relative text-white">
+            {/* Left Tagline */}
+            {/* <div className="absolute left-40 text-5xl  max-w-xs">
+                Crafting the juiciest burgers, one flip at a time!
+            </div> */}
+
+            {/* Video */}
+            <video
+                src={Video1}
+                autoPlay
+                loop
+                muted
+                controls
+                className="h-[100vh] object-cover z-10"
+            />
+
+            {/* Right Tagline */}
+            <div className="absolute right-40 text-5xl max-w-xs text-right">
+                Sizzling secrets revealed – burger mastery unlocked!
             </div>
         </div>
     );
